@@ -16,7 +16,7 @@ public class HammurabiTest {
 
     @Before
     public void setUp() throws Exception {
-        ham = new HAMURABI();
+        ham = new Hammurabi();
     }
 
     @Test

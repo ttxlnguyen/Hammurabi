@@ -22,33 +22,33 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
 
         // declare local variables here: grain, population, etc.
         // statements go after the declations
-        while(gameon) {
-            askHowManyAcresToBuy(19, bushels);
-            sellHowManyAcres(acresOwned);
-            askHowMuchGrainToFeedPeople(bushels);
-            askHowManyAcresToPlant(acresOwned, population, bushels);
+//        while(gameon) {
+            acresToBuy(19, bushels);
+            acresToSell(acresOwned);
+            feedThePeople(bushels);
+            acresToPlant(acresOwned, population, bushels);
             plagueDeaths(population);
             starvationDeaths(population, bushels);
             uprising(population, 10);
-        }
-        scanner.close();
+//        }
+//        scanner.close();
     }
 
-    public int askHowManyAcresToBuy(int price, int bushels){
-        System.out.print("How many acres of land do you wish to buy?");
+    public int acresToBuy(int price, int bushels){
+        System.out.println("How many acres of land do you wish to buy?");
         int userInput = scanner.nextInt();
         price = userInput * 19;
-        if (bushels >= price){
+        if (this.bushels >= price){
             this.bushels -= price;
             this.acresOwned += userInput;
         } else {
-            System.out.println("You dont have enough bushels to purchase.");
+            System.out.println("You don't have enough bushels to purchase.");
         }
-        System.out.println("You have " + bushels + " bushels left, and " + acresOwned + " acres left.");
+        System.out.println("You have " + this.bushels + " bushels left, and " + acresOwned + " acres left.");
         return userInput;
     }
 
-    public int sellHowManyAcres(int acresOwned){
+    public int acresToSell(int acresOwned){
         System.out.println("How many acres of land do you wish to sell?");
         int userInput = scanner.nextInt();
         if (userInput <= acresOwned){
@@ -57,24 +57,25 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         } else {
             System.out.println("You don't have enough acres");
         }
-        System.out.println(acresOwned + " acres left.");
+        System.out.println(this.acresOwned + " acres left.");
         return userInput;
     }
 
-    public int askHowMuchGrainToFeedPeople(int bushels){
+    public int feedThePeople(int bushels){
         System.out.println("How many bushels would you like to feed the people?");
         System.out.println("You have currently have " + bushels + " bushels.");
         int userInput = scanner.nextInt();
         if (userInput < bushels){
+            System.out.println("Such generosity, thank you for feeding the people " + userInput + " bushels");
             this.bushels -= userInput;
         } else {
             System.out.println("You don't have enough bushels");
         }
-        System.out.println("You now have " + bushels + " bushels left.");
+        System.out.println("You now have " + this.bushels + " bushels left.");
         return userInput;
     }
 
-    public int askHowManyAcresToPlant(int acresOwned, int population, int bushels){
+    public int acresToPlant(int acresOwned, int population, int bushels){
 //        int peoplePerAcres = population / 10;
         while(true) {
             System.out.println("How many acres would you like to plant?");
@@ -84,7 +85,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
             if (acresOwned >= userInput && bushels >= amountOfBushelsNeeded && this.population >= amountOfPeopleNeeded) {
                 System.out.println("You're now planting " + userInput + " acres.");
                 this.bushels -= amountOfBushelsNeeded;
-                System.out.println("You now have " + bushels + " left.");
+                System.out.println("You now have " + this.bushels + " bushels left.");
                 return userInput;
             } else {
                 System.out.println("You lack the resources to plant this amount of acres.");

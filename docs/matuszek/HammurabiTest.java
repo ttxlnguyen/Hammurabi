@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class HammurabiTest {
 
-    HAMURABI ham;
+    Hammurabi ham;
     
     boolean about(double expected, double actual) {
         return actual > 0.90 * expected && actual < 1.10 * expected;

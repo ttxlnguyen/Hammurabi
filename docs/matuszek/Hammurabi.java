@@ -43,7 +43,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
                 totalBushels += bushels;
 
                 if (years< 10){
-                    System.out.println("===========================================================================");
+                    System.out.println("\n===========================================================================");
                     System.out.println("You are in year " + years + " of you reign.");
                     System.out.println("In the previous year, " + starved + " people starved, and " + newImmigrants + " people came to the city.");
                     System.out.println("You total population is currently " + population + " people strong.");
@@ -56,7 +56,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
                     feedThePeople(bushels);
                     acresToPlant(acresOwned, population, bushels);
                     plagueDeaths(population);
-                    starvationDeaths(population, bushels);
+                    starvationDeaths(population, bushelsFed);
                     harvest(acresOwned);
                     uprising(population, starved);
                     immigrants(population, acresOwned, bushels);
@@ -115,6 +115,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
                 this.bushels -= userInput;
                 System.out.println("Such generosity my lord, thank you for feeding the people " + userInput + " bushels.");
                 System.out.println("You now have " + this.bushels + " bushels left.\n");
+                bushelsFed = userInput;
                 return userInput;
             } else {
                 System.out.println("You don't have enough bushels to feed the people. You currently have: " + this.bushels);
@@ -169,7 +170,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     }
 
     public boolean uprising(int population, int howManyPeopleStarved) {
-        double populationNumber = (int) population * 0.45;
+        double populationNumber = population * 0.45;
         if (howManyPeopleStarved > populationNumber){
             System.out.println("You let too many people starve. Game over.");
             runGame = false;
@@ -206,7 +207,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
                 double randomNumber2 = (random2.nextInt(21)+10); // Sets bounds 10-30
                 bushelsEatenByRats = (int) (randomNumber2 * bushels) / 100;
                 this.bushels -= bushelsEatenByRats;
-                System.out.println("You kingdom has is experiencing a rat infestation.");
+                System.out.println("You kingdom is experiencing a rat infestation.");
                 return bushelsEatenByRats;
             } else {
                 return 0;

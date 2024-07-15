@@ -35,14 +35,14 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
 
         // declare local variables here: grain, population, etc.
         // statements go after the declations
-        for (int i = 0; i<= 10; i++) {
+        for (int i = 0; i <= 10; i++) {
             while(runGame) {
                 i++;
                 years++;
                 totalAcres += acresOwned;
                 totalBushels += bushels;
 
-                if (years< 10){
+                if (years <= 10){
                     System.out.println("\n===========================================================================");
                     System.out.println("You are in year " + years + " of you reign.");
                     System.out.println("In the previous year, " + starved + " people starved, and " + newImmigrants + " people came to the city.");
@@ -173,6 +173,11 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         double populationNumber = population * 0.45;
         if (howManyPeopleStarved > populationNumber){
             System.out.println("You let too many people starve. Game over.");
+
+            System.out.println("Gained " + totalBushels + " total bushels.");
+            System.out.println("Let " + totalStaved + " people starve.");
+            System.out.println("Acquired " + totalAcres + " total acres of land.");
+
             runGame = false;
             return true;
         } else {
@@ -226,8 +231,8 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     public void finalSummary() {
         System.out.println("\nCongratulations my lord, you've eclipsed a ten year tenure.");
         System.out.println("In ten years you've...");
-        System.out.println("Gained " + totalBushels + " total bushels.");
+        System.out.println("Gained " + totalBushels + " total bushels in ten years.");
         System.out.println("Let " + totalStaved + " people starve.");
-        System.out.println("Acquired " + totalAcres + " total acres of land.");
+        System.out.println("Planted " + totalAcres + " total acres of land.");
     }
 }
